@@ -9,17 +9,15 @@ npm install
 npm run dev
 ```
 
+Vite serves the page at http://localhost:5173/react-image-crop-drag-example/.
+
 ## Deploy it
 
-```bash
-npm run build
-```
+Pushing to `main` builds the site and publishes it to GitHub Pages through `.github/workflows/deploy.yml`. Enable that once in Settings, Pages, by setting Source to GitHub Actions.
 
-That writes a static site to `dist/`, which any static host can serve. Preview the built output with `npm run preview`.
+`vite.config.ts` sets [`base`](https://vite.dev/config/shared-options.html#base) to `/react-image-crop-drag-example/`, the path Pages serves this repo from. The dev server, `npm run preview`, and the deployed site all read that one value, so a path that works locally works on Pages. Change it if you rename the repo or move to a host that serves from a domain root.
 
-If you serve the site from a subpath rather than a domain root, set
-[`base`](https://vite.dev/config/shared-options.html#base) in `vite.config.ts` to that subpath so
-the asset URLs resolve.
+`npm run build` writes the same static site to `dist/` if you would rather host it yourself.
 
 ## What the page does
 

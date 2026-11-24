@@ -18,10 +18,12 @@ type Frame = {
   height: number;
 };
 
+const sample = (file: string) => `${import.meta.env.BASE_URL}samples/${file}`;
+
 export const PICTURES: Picture[] = [
-  { id: 'poster', label: 'Poster', src: '/samples/poster-portrait.svg', width: 900, height: 1350 },
-  { id: 'coast', label: 'Coast', src: '/samples/coast-panorama.svg', width: 1800, height: 600 },
-  { id: 'studio', label: 'Studio', src: '/samples/studio-square.svg', width: 1200, height: 1200 }
+  { id: 'poster', label: 'Poster', src: sample('poster-portrait.svg'), width: 900, height: 1350 },
+  { id: 'coast', label: 'Coast', src: sample('coast-panorama.svg'), width: 1800, height: 600 },
+  { id: 'studio', label: 'Studio', src: sample('studio-square.svg'), width: 1200, height: 1200 }
 ];
 
 export const UPLOADED_ID = 'uploaded';
