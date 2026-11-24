@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1350" viewBox="0 0 900 1350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#0c1b28" />
+      <stop offset="1" stop-color="#2f5d78" />
+    </linearGradient>
+    <pattern id="grid" width="90" height="90" patternUnits="userSpaceOnUse">
+      <path d="M90 0H0V90" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2" />
+    </pattern>
+  </defs>
+
+  <rect width="900" height="1350" fill="url(#bg)" />
+  <rect width="900" height="1350" fill="url(#grid)" />
+  <rect x="10" y="10" width="880" height="1330" fill="none" stroke="#f2c66d" stroke-opacity="0.45"
+    stroke-width="4" />
+
+  <g stroke="#f2c66d" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="14 12">
+    <path d="M0 337.5H900M0 675H900M0 1012.5H900" />
+  </g>
+  <g fill="#f2c66d" fill-opacity="0.75" font-family="system-ui, sans-serif" font-size="30"
+    font-weight="600" letter-spacing="3">
+    <text x="36" y="325">25%</text>
+    <text x="36" y="662">50%</text>
+    <text x="36" y="1000">75%</text>
+  </g>
+
+  <g fill="#f2c66d" font-family="system-ui, sans-serif" text-anchor="middle" font-size="60"
+    font-weight="700" letter-spacing="16">
+    <text x="450" y="120">TOP EDGE</text>
+    <text x="450" y="1280">BOTTOM EDGE</text>
+  </g>
+
+  <g transform="translate(450 675)">
+    <circle r="54" fill="none" stroke="#f2c66d" stroke-width="5" />
+    <path d="M-86 0H-26M26 0H86M0 -86V-26M0 26V86" stroke="#f2c66d" stroke-width="5" />
+    <text y="128" fill="#f2c66d" font-family="system-ui, sans-serif" font-size="28" font-weight="600"
+      letter-spacing="8" text-anchor="middle">FOCAL POINT</text>
+  </g>
+
+  <g fill="#ffffff" font-family="system-ui, sans-serif" font-size="32" font-weight="600"
+    letter-spacing="4">
+    <text x="36" y="1170" fill-opacity="0.95">Portrait poster</text>
+    <text x="36" y="1215" fill-opacity="0.55">900 &#215; 1350</text>
+  </g>
+</svg>

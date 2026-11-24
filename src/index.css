@@ -1,0 +1,385 @@
+:root {
+  --ink: #15181c;
+  --muted: #5d656f;
+  /* 4.8:1 on the card, 4.6:1 on the page background, so the 11px and 12px
+     labels that use it clear WCAG AA. */
+  --faint: #6b7280;
+  --line: #e3e6ea;
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --focus: #2f6feb;
+
+  --sans: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Consolas, 'Liberation Mono', monospace;
+
+  font: 16px/1.5 var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+.masthead {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.kicker {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* --faint clears AA on the cards but not on the darker page background. */
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-family: var(--mono);
+}
+
+.lede {
+  margin: 0 0 20px;
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.install {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--card);
+  font: 14px var(--mono);
+  color: var(--ink);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 296px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.stage,
+.panel,
+.code {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.stage {
+  padding: 24px;
+}
+
+/* The frame scrolls here rather than in .stage, so the readout below it stays
+   put on a narrow viewport. */
+.stage-inner {
+  overflow-x: auto;
+}
+
+/* The component takes containerWidth and containerHeight in pixels, so it must
+   not be a flex item: flex-shrink would render a narrower frame than the prop
+   asks for. An auto margin centres it without clipping when the stage scrolls. */
+.stage-inner > div {
+  margin-inline: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 24px 0 0;
+  padding: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .readout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.readout > div {
+  padding: 12px 14px;
+  background: var(--card);
+}
+
+.readout dt {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.readout dd {
+  margin: 4px 0 0;
+  font: 15px var(--mono);
+}
+
+.hint {
+  margin: 14px 2px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.panel {
+  padding: 8px 20px 20px;
+}
+
+fieldset {
+  margin: 0;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel fieldset:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 4px;
+}
+
+legend {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 10px;
+  font: 13px var(--mono);
+  color: var(--muted);
+}
+
+legend .value {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Wrapping keeps a thumbnail legible once an uploaded image makes four. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+  gap: 6px;
+}
+
+.frames {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+button {
+  font: inherit;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #c9cfd6;
+}
+
+/* An image picker shows the images. Words here would collide with the frame
+   shapes below, which is the one vocabulary that belongs to the frame. */
+.gallery button {
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery button[aria-pressed='true'] {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.frames button {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.frames strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.frames span {
+  font: 13px var(--mono);
+  color: var(--muted);
+}
+
+.frames button[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.frames button[aria-pressed='true'] span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.upload {
+  display: block;
+  margin-top: 8px;
+}
+
+.upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.upload span {
+  display: block;
+  padding: 8px 12px;
+  border: 1px dashed #c9cfd6;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload span:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.upload input:focus-visible + span {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.filename {
+  margin: 8px 0 0;
+  font: 12px var(--mono);
+  color: var(--faint);
+  overflow-wrap: anywhere;
+}
+
+.upload-failed {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #b42318;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.toggle input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.slider {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.zoom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  font: 12px var(--mono);
+  color: var(--faint);
+}
+
+.reset {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.code {
+  margin-top: 24px;
+  padding: 18px 20px 20px;
+}
+
+.code-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.code-head h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.code-head button {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+pre {
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: 8px;
+  background: #15181c;
+  color: #e7eaee;
+  overflow-x: auto;
+}
+
+code {
+  font: 13.5px/1.65 var(--mono);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}

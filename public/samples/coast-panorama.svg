@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="600" viewBox="0 0 1800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0.6">
+      <stop offset="0" stop-color="#2a1711" />
+      <stop offset="1" stop-color="#9b5334" />
+    </linearGradient>
+    <pattern id="grid" width="90" height="90" patternUnits="userSpaceOnUse">
+      <path d="M90 0H0V90" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2" />
+    </pattern>
+  </defs>
+
+  <rect width="1800" height="600" fill="url(#bg)" />
+  <rect width="1800" height="600" fill="url(#grid)" />
+  <rect x="10" y="10" width="1780" height="580" fill="none" stroke="#f3dcc6" stroke-opacity="0.45"
+    stroke-width="4" />
+
+  <g stroke="#f3dcc6" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="14 12">
+    <path d="M450 0V600M900 0V600M1350 0V600" />
+  </g>
+  <g fill="#f3dcc6" fill-opacity="0.75" font-family="system-ui, sans-serif" font-size="28"
+    font-weight="600" letter-spacing="3" text-anchor="middle">
+    <text x="450" y="60">25%</text>
+    <text x="900" y="60">50%</text>
+    <text x="1350" y="60">75%</text>
+  </g>
+
+  <g fill="#f3dcc6" font-family="system-ui, sans-serif" font-size="48" font-weight="700"
+    letter-spacing="12">
+    <text x="40" y="320" text-anchor="start">LEFT EDGE</text>
+    <text x="1760" y="320" text-anchor="end">RIGHT EDGE</text>
+  </g>
+
+  <g transform="translate(900 300)">
+    <circle r="54" fill="none" stroke="#f3dcc6" stroke-width="5" />
+    <path d="M-86 0H-26M26 0H86M0 -86V-26M0 26V86" stroke="#f3dcc6" stroke-width="5" />
+    <text y="128" fill="#f3dcc6" font-family="system-ui, sans-serif" font-size="26" font-weight="600"
+      letter-spacing="8" text-anchor="middle">FOCAL POINT</text>
+  </g>
+
+  <g fill="#ffffff" font-family="system-ui, sans-serif" font-size="30" font-weight="600"
+    letter-spacing="4">
+    <text x="40" y="510" fill-opacity="0.95">Coast panorama</text>
+    <text x="40" y="553" fill-opacity="0.55">1800 &#215; 600</text>
+  </g>
+</svg>
